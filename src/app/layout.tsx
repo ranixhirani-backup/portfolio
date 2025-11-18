@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
-import { PT_Sans } from "next/font/google";
-import { ghibliFont } from "@/lib/font"; // Import the ghibli font
+import { ghibliFont } from "@/lib/font"; // Import the ghibli font (fallback)
 import "./globals.css";
 
-const nunito = Nunito({
-  variable: "--font-nunito",
-  subsets: ["latin"],
-});
-
-const ptSans = PT_Sans({
-  variable: "--font-pt-sans",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+// Lightweight fallbacks for local development to avoid remote Google font
+// requests. They expose the same `variable` property used in layout classNames.
+const nunito = { variable: "--font-nunito" };
+const ptSans = { variable: "--font-pt-sans" };
 
 export const metadata: Metadata = {
   title: "Rohit Sharma",
